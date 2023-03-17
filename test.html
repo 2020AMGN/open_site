@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Fruit</title>
+  </head>
+  <body>
+    <pre id="food"></pre>
+    <script>
+      window.onload = function() {
+        fetch("fruits.json")
+          .then(response => response.json())
+          .then(data => {
+            const fruits = data.fruits;
+            const randomIndex = Math.floor(Math.random() * fruits.length);
+            const fruit = fruits[randomIndex];
+            const food = {
+              "title": "Food",
+              "fruit": fruit
+            };
+            document.getElementById("food").textContent = JSON.stringify(food);
+          });
+      };
+    </script>
+  </body>
+</html>
